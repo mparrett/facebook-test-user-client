@@ -1,10 +1,8 @@
 #Facebook Test User Client
 
-This tool allows uses a Guzzle Service description to rap the API Facebook
-has provided to create and maintain test user accounts on their app platform.
-
-With it you can read, create, update and delete the test users of your 
-application. You can also create friendships between your test users.
+This tool provides a wrapper for the Facebook Test User API. With it you can 
+read, create, update and delete the test users of your application. You can 
+also create friendships between your test users.
 
 While some knowledge of the underlying API is required to use it (notably which 
 optional parameters to pass to the CreateUser method and the work flow required 
@@ -67,6 +65,7 @@ try {
     throw $e;
 }
 
+````
 
 ##Commands
 
