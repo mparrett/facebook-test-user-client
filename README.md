@@ -82,16 +82,16 @@ token. The token is used on subsequent requests to create and manipulate test
 users on behalf of your application.
 
 #### Params
-
+````
 | Name          | Explanation                                               | Required | 
 | client_id     | Your application ID (obtained from the developer app)     | Y        |
 | client_secret | Your application secret (obtained from the developer app) | Y        | 
-
+````
 #### Response
-
+````
 | Name          | Explanation                                                 | 
 | access_token  | Used to make further calls to the Api on behalf of your app | 
-
+````
 ````php
 
         $appId = "YOUR ID GOES HERE";
@@ -118,7 +118,7 @@ users on behalf of your application.
 This method creates a test user according to your specification.
 
 #### Params
-
+````
 | Name         | Explanation                                              | Required | 
 | appId        | Your application ID (obtained from the developer app)    | Y        |
 | access_token | An app access_token (see ObtainAppAccessToken)           | Y        |
@@ -126,16 +126,16 @@ This method creates a test user according to your specification.
 | permissions  | Comma seperated list of permissions the user has granted | n        |
 | installed    | True / False - Has the user installed your app           | n        |
 | locale       | The users locale                                         | n        |
-
+````
 #### Response
-
+````
 | Name         | Explanation                                                       | 
 | id           | The users id                                                      | 
 | access_token | A user access_token used to make Open Graph requests for the user | 
 | login_url    | A url to allowing you to login as the user                        | 
 | email        | The users email address                                           | 
 | password     | The users password                                                | 
-
+````
 ````php
         
         // Access token from previous request. See Above.
@@ -164,16 +164,16 @@ This method creates a test user according to your specification.
 This method deletes a previously created test user.
 
 #### Params
-
+````
 | Name         | Explanation                                              | Required | 
 | testUserId   | An ID of a test user associated with your application    | Y        |
 | access_token | An app access_token (see ObtainAppAccessToken)           | Y        |
-
+````
 #### Response
-
+````
 | Name         | Explanation            | 
 | result       | Success (true / false) | 
-
+````
 
 ````php
         
@@ -205,23 +205,23 @@ Gets all the test users associated with your application. Complete with
 access tokens and other data.
 
 #### Params
-
+````
 | Name         | Explanation                                              | Required | 
 | appId        | Your application ID (obtained from the developer app)    | Y        |
 | access_token | An app access_token (see ObtainAppAccessToken)           | Y        |
-
+````
 #### Response
-
+````
 | Name         | Explanation        | 
 | users        | And array of users | 
-
+````
 #### Response (['users'] - )
-
+````
 | Name         | Explanation                                              | 
 | id           | An ID of a test user associated with your application    | 
 | access_token | An app access_token (see ObtainAppAccessToken)           |
 | login_url    | A url to allowing you to login as the user               | 
-
+````
 
 ````php
         
@@ -258,22 +258,22 @@ The the same command is used (with the user ID's reversed) with user2's
 access_token to accept the request. See below for an example.
 
 #### Params
-
+````
 | Name         | Explanation                                              | Required | 
 | user1        | A test user id associated to the application             | Y        |
 | user2        | A test user id associated to the application             | Y        |
 | access_token | user1's access token.                                    | Y        |
-
+````
 **Note: It takes two commands to create a friendship between test users. In the 
 first request user1's id is passed first and user1's access_token is used. 
 In the second request user2's id is passed first and user2's access_token 
 is used.**
 
 #### Response
-
+````
 | Name         | Explanation           | 
 | result       | Success: true / false | 
-
+````
 
 ````php
         // Missing Code. Two users are created using the CreateUser command.
