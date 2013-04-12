@@ -1,0 +1,16 @@
+<phpunit backupGlobals="true"
+         bootstrap="vendor/autoload.php"
+         colors="true">
+    
+    <php>
+        <const name="FB_APP_ID" value="YOUR FACEBOOK APP ID"/>
+        <const name="FB_APP_SECRET" value="YOUR FACEBOOK APP SECRET"/>
+    </php>
+    
+    <testsuites>
+        <testsuite name="Integration Tests">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+</phpunit>

@@ -1,0 +1,259 @@
+{
+    "name": "Facebook Testing Api",
+    "apiVersion": "2012-10-14",
+    "baseUrl": "https://graph.facebook.com",
+    "description": "A service that maniplates the Facebook test users Api",
+    "operations": {
+        "ObtainAppAccessToken": {
+            "httpMethod": "POST",
+            "uri": "/oauth/access_token",
+            "summary": "Get an app access token to use to make requests",
+            "responseClass": "ObtainAppAccessTokenResponse",
+            "parameters": {
+                "client_id": {
+                    "location": "query",
+                    "description": "The facebook applications App ID",
+                    "required": true
+                },
+                "client_secret": {
+                    "location": "query",
+                    "description": "The facebook applications App ID",
+                    "required": true
+                },
+                "grant_type": {
+                    "location": "query",
+                    "description": "The facebook applications App ID",
+                    "default": "client_credentials"
+                }
+            }
+        },
+        "CreateUser": {
+            "httpMethod": "POST",
+            "uri": "/{appId}/accounts/test-users",
+            "summary": "Creates a test user",
+            "responseClass": "CreateUserOutput",
+            "parameters": {
+                "appId": {
+                    "location": "uri",
+                    "description": "The facebook applications App ID",
+                    "required": true
+                },
+                "access_token": {
+                    "location": "query",
+                    "description": "An app access token",
+                    "required": true
+                },
+                "name": {
+                    "location": "query",
+                    "description": "The test facebook users name"
+                },
+                "permissions": {
+                    "location": "query",
+                    "description": "The test facebook users permisions on the specified app"
+                },
+                "installed": {
+                    "location": "query",
+                    "description": "The test facebook users installed yes / no flag"
+                },
+                "locale": {
+                    "location": "query",
+                    "description": "The test facebook users locale"
+                }
+            }
+        },
+        "GetUser": {
+            "httpMethod": "GET",
+            "uri": "https://graph.facebook.com/{testUserId}",
+            "summary": "Gets a test user from the open graph",
+            "responseClass": "GetUserOutput",
+            "parameters": {
+                "testUserId": {
+                    "location": "uri",
+                    "description": "The test users id",
+                    "required": true
+                },
+                "access_token": {
+                    "location": "query",
+                    "description": "An app access token",
+                    "required": true
+                }
+            }
+        },
+        "GetUsers": {
+            "httpMethod": "GET",
+            "uri": "/{appId}/accounts/test-users",
+            "summary": "Gets the test users for the app",
+            "responseClass": "GetUsersOutput",
+            "parameters": {
+                "appId": {
+                    "location": "uri",
+                    "description": "The facebook applications App ID",
+                    "required": true
+                },
+                "access_token": {
+                    "location": "query",
+                    "description": "An app access token",
+                    "required": true
+                }
+            }
+        },
+        "ConnectFriend": {
+            "httpMethod": "POST",
+            "uri": "/{user1}/friends/{user2}",
+            "summary": "Creates or responds to a friend request",
+            "responseClass": "ConnectFriendResponse",
+            "parameters": {
+                "user1": {
+                    "location": "uri",
+                    "description": "The user id of user1",
+                    "required": true
+                },
+                "user2": {
+                    "location": "uri",
+                    "description": "The user id of user2",
+                    "required": true
+                },
+                "access_token": {
+                    "location": "query",
+                    "description": "User access_token of friend1",
+                    "required": true
+                }
+            }
+        },
+        "DeleteUser": {
+            "httpMethod": "DELETE",
+            "uri": "/{testUserId}",
+            "summary": "Deletes a test user",
+            "responseClass": "DeleteUserOutput",
+            "parameters": {
+                "testUserId": {
+                    "location": "uri",
+                    "description": "The ID of the test user",
+                    "required": true
+                },
+                "access_token": {
+                    "location": "query",
+                    "description": "An app access token",
+                    "required": true
+                }
+            }
+        }
+        
+    },
+    "models": {
+        "CreateUserOutput": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "access_token": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "login_url": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "email": {
+                    "location": "json",
+                    "type": "string"
+                },
+                "password": {
+                    "location": "json",
+                    "type": "string"
+                }
+            }
+        },
+        "GetUsersOutput": {
+            "type": "object",
+            "properties": {
+                "users": {
+                    "location": "json",
+                    "type": "array",
+                    "sentAs": "data",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "location": "json",
+                                "type": "string"
+                            },
+                            "access_token": {
+                                "location": "json",
+                                "type": "string"
+                            },
+                            "login_url": {
+                                "location": "json",
+                                "type": "string"
+                            }   
+                        }
+                    }                        
+                }
+            }
+        },
+        "GetUserOutput": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "location": "json"
+                },
+                "name": {
+                    "location": "json"
+                },
+                "first_name": {
+                    "location": "json"
+                },
+                "last_name": {
+                    "location": "json"
+                },
+                "link": {
+                    "location": "json"
+                },
+                "gender": {
+                    "location": "json"
+                },
+                "locale": {
+                    "location": "json"
+                }
+            }
+        },
+        "DeleteUserOutput": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "location": "body",
+                    "filters": [
+                        "Bwaine\\FacebookTestUserClient\\Filter\\BooleanBodyParameterFilter::filterBodyForTrueFalse"
+                    ]
+                }
+            }
+        },
+        "ConnectFriendResponse": {
+            "type": "object",
+            "properties": {
+                "result": {
+                    "location": "body",
+                    "filters": [
+                        "Bwaine\\FacebookTestUserClient\\Filter\\BooleanBodyParameterFilter::filterBodyForTrueFalse"
+                    ]
+                }
+            }
+        },
+   
+        "ObtainAppAccessTokenResponse": {
+            "type": "object",
+            "properties": {
+                "access_token": {
+                    "location": "body",
+                    "type": "string",
+                    "filters": [
+                        "Bwaine\\FacebookTestUserClient\\Filter\\AccessTokenFilter::filterAccessToken"
+                    ]
+                }
+            }
+        }
+        
+    }
+}

@@ -1,0 +1,5 @@
+phpunit.xml
+nbproject
+bin
+vendor
+/nbproject/private/

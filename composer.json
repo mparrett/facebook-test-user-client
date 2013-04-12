@@ -1,0 +1,28 @@
+{
+    "name": "Bwaine/FacebookTestUserClient",
+    "type": "library",
+    "description": "Guzzle client for interacting with the facebook test users api",
+    "keywords": ["facebook","api", "client"],
+    "homepage": "http://github.com/benwaine/facebook-test-user-client",
+    "authors": [
+    {
+        "name": "Ben Waine",
+        "email": "ben@ben-waine.co.uk",
+        "role": "Developer"
+    }
+    ],
+    "require": {
+        "guzzle/guzzle": "v3.3.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*@dev"
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "autoload": {
+        "psr-0": {
+            "Bwaine\\FacebookTestUserClient": "src/"
+        }
+    }
+}
